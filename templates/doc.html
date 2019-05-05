@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document Management System</title>
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+        />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+        <link rel="stylesheet" href="//cdn.quilljs.com/1.3.6/quill.bubble.css" />
+        <link rel="stylesheet" href="main.css" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    </head>
+    <body class="bg-light">
+        <nav class="amber">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="#" data-target="slide-out" class="sidenav-trigger d-block"
+                        ><i class="material-icons">menu</i></a
+                    >
+                    <p class="brand-logo">Document</p>
+                    <ul id="slide-out" class="sidenav">
+                        <li>
+                            <div class="user-view">
+                                <div class="background">
+                                    <img src="images/bg.jpg" />
+                                </div>
+                                <a href="#user"><img class="circle" src="images/shubhangi.jpg"/></a>
+                                <a href="#name"><span class="white-text name">Shubhangi Gupta</span></a>
+                                <a href="#email"><span class="white-text email">shubhangi@gmail.com</span></a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#!"><i class="material-icons">home</i>Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#!"><i class="material-icons">add</i>Create New Document</a>
+                        </li>
+                        <li>
+                            <a href="#!"><i class="material-icons">edit</i>Profile</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#" class="text-small text-muted">Terms of Use</a>
+                        </li>
+                        <li>
+                            <a class="text-muted text-small">
+                                &copy; VIPS
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <div class="container-fluid mt-4">
+                <div id="changes">
+                    <div class="text-small">All Changes are saved.</div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div id="toolbar"></div>
+                        <div id="editor" class="p-2 pt-3"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <section id="loading">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 d-flex justify-content-center">
+                        <div class="lds-ellipsis">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"
+    ></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"
+    ></script>
+    <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".sidenav").sidenav();
+
+            var Font = Quill.import("formats/font");
+            // We do not add Sans Serif since it is the default
+            Font.whitelist = [
+                "Inconsolata",
+                "Lato",
+                "Mirza",
+                "Arial",
+                "Montserrat",
+                "Open Sans",
+                "PT Sans",
+                "Poppins",
+                "Raleway",
+                "Roboto Mono",
+                "Source Sans Pro",
+                "Ubuntu"
+            ];
+            Quill.register(Font, true);
+
+            var toolbarOptions = [
+                ["bold", "italic", "underline", "strike"], // toggled buttons
+                ["blockquote", "code-block"],
+                [{ header: 1 }, { header: 2 }], // custom button values
+                [{ list: "ordered" }, { list: "bullet" }],
+                [{ script: "sub" }, { script: "super" }], // superscript/subscript
+                [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+                [{ direction: "rtl" }], // text direction
+                [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+                ["link", "image", "video"],
+                [{ header: [1, 2, 3, 4, 5, 6, false] }],
+                [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+                [
+                    {
+                        font: [
+                            "",
+                            "Inconsolata",
+                            "Lato",
+                            "Mirza",
+                            "Arial",
+                            "Montserrat",
+                            "Open-Sans",
+                            "PT-Sans",
+                            "Poppins",
+                            "Raleway",
+                            "Roboto-Mono",
+                            "Source-Sans-Pro",
+                            "Ubuntu"
+                        ]
+                    }
+                ],
+                [{ align: [] }],
+                ["clean"] // remove formatting button
+            ];
+
+            var quill = new Quill("#editor", {
+                modules: {
+                    toolbar: toolbarOptions
+                },
+                theme: "snow"
+            });
+
+            let loading = false;
+            var that = this;
+            quill.on("text-change", function() {
+                const changes = that.quill.getContents();
+                if (!that.loading) {
+                    console.log(that.quill.getContents());
+                    that.loading = true;
+                    $("#changes").text("Saving");
+                    setTimeout(function() {
+                        that.loading = false;
+                        $("#changes").text("All Changes are saved.");
+                    }, 3000);
+                }
+            });
+        });
+    </script>
+</html>

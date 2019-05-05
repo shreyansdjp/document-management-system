@@ -1,0 +1,45 @@
+{% extends 'base.html' %} {% block content %}
+<body class="bg-light">
+    <div class="container">
+        <div class="row justify-content-center align-items-center" style="height: 100vh;">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-content">
+                        <img
+                            src="{{ url_for('static', filename='images/google-docs-icon.png') }}"
+                            class="logo mx-auto"
+                            alt=""
+                        />
+                        <h1 class="text-center">Login</h1>
+                        <hr class="purple" width="200px" size="10" />
+                        <form action="{{ url_for('login') }}" method="POST">
+                            <div class="input-field">
+                                <i class="material-icons prefix">email</i>
+                                {{ form.email(class='validate', placeholder='Email Address') }}
+
+                                {% if form.email.errors %} {% for error in form.email.errors %}
+                                <span class="helper-text red-text">{{ error }}</span>
+                                {% endfor %} {% endif %}
+                            </div>
+                            <div class="input-field">
+                                <i class="material-icons prefix">vpn_key</i>
+                                {{ form.password(class='validate', placeholder='Password') }}
+
+                                {% if form.password.errors %} {% for error in form.password.errors %}
+                                <span class="helper-text red-text">{{ error }}</span>
+                                {% endfor %} {% endif %}
+                            </div>
+                            <div class="form-group d-flex justify-content-center">
+                                {{ form.submit(class='waves-effect blue btn mt-4') }}
+                            </div>
+                        </form>
+                        <div class="form-group d-flex justify-content-center">
+                            <p class="text-muted">New Member? <a href="#" class="font-weight-bold">Sign Up</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
