@@ -8,6 +8,9 @@ verify_ssl = true
 [packages]
 flask = "*"
 flask-wtf = "*"
+flask-cors = "*"
+pillow = "*"
+passlib = "*"
 
 [requires]
 python_version = "3.7"

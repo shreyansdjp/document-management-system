@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Inconsolata|Lato|Mirza|Montserrat|Open+Sans|PT+Sans|Poppins|Raleway|Roboto|Roboto+Mono|Source+Sans+Pro|Ubuntu");
 
 * {
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
 }
 
 .input-field {
@@ -244,4 +244,8 @@ Set the font-family content used for the HTML content.
 .input-field input[type="text"]:focus {
     border-bottom: 1px solid #000;
     box-shadow: 0 1px 0 0 #000;
+}
+
+input[type="submit"] {
+    color: white !important;
 }

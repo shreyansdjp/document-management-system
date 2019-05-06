@@ -1,0 +1,38 @@
+<nav class="amber">
+    <div class="container">
+        <div class="nav-wrapper">
+            <a href="#" data-target="slide-out" class="sidenav-trigger d-block"><i class="material-icons">menu</i></a>
+            <p class="brand-logo">{{ title }}</p>
+            <ul id="slide-out" class="sidenav">
+                <li>
+                    <div class="user-view">
+                        <div class="background">
+                            <img src="{{ url_for('static', filename='images/bg.jpg') }}" />
+                        </div>
+                        <a href="#user"><img class="circle" src="{{ url_for('static', filename='images/shubhangi.jpg') }}"/></a>
+                        <a href="#name"><span class="white-text name">Shubhangi Gupta</span></a>
+                        <a href="#email"><span class="white-text email">shubhangi@gmail.com</span></a>
+                    </div>
+                </li>
+                <li>
+                    <a href="{{ url_for('dashboard') }}"><i class="material-icons">home</i>Dashboard</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('new_document') }}"><i class="material-icons">add</i>Create New Document</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('profile') }}"><i class="material-icons">person</i>Profile</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a href="#" class="text-small text-muted">Terms of Use</a>
+                </li>
+                <li>
+                    <a class="text-muted text-small">
+                        &copy; VIPS
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

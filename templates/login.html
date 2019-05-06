@@ -12,7 +12,8 @@
                         />
                         <h1 class="text-center">Login</h1>
                         <hr class="purple" width="200px" size="10" />
-                        <form action="{{ url_for('login') }}" method="POST">
+                        <form action="" method="POST">
+                            {{ form.hidden_tag() }}
                             <div class="input-field">
                                 <i class="material-icons prefix">email</i>
                                 {{ form.email(class='validate', placeholder='Email Address') }}
@@ -30,11 +31,11 @@
                                 {% endfor %} {% endif %}
                             </div>
                             <div class="form-group d-flex justify-content-center">
-                                {{ form.submit(class='waves-effect blue btn mt-4') }}
+                                {{ form.submit(class='waves-effect waves-light blue btn mt-4') }}
                             </div>
                         </form>
                         <div class="form-group d-flex justify-content-center">
-                            <p class="text-muted">New Member? <a href="#" class="font-weight-bold">Sign Up</a></p>
+                            <p class="text-muted">New Member? <a href="{{ url_for('signup') }}" class="font-weight-bold">Sign Up</a></p>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,81 @@
+{% extends 'base.html' %} {% block content %}
+<body class="bg-light">
+    {% include 'partials/_navbar.html' %}
+
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="{{ url_for('static', filename='images/doc-bg.png') }}" alt="" />
+                        <a class="btn-floating halfway-fab waves-effect waves-light amber lighten-2"
+                            ><i class="material-icons">edit</i></a
+                        >
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title font-weight-bold mt-0">Document 1</span>
+                        <p class="text-muted">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, excepturi architecto
+                            temporibus exercitationem magni sequi labore error nobis sint placeat
+                        </p>
+                    </div>
+                    <div class="card-action d-flex justify-content-center">
+                        <a href="#" class="waves-effect btn amber btn-block">View</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="{{ url_for('static', filename='images/doc-bg.png') }}" alt="" />
+                        <a class="btn-floating halfway-fab waves-effect waves-light amber lighten-2"
+                            ><i class="material-icons">edit</i></a
+                        >
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title font-weight-bold mt-0">Document 1</span>
+                        <p class="text-muted">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, excepturi architecto
+                            temporibus exercitationem magni sequi labore error nobis sint placeat
+                        </p>
+                    </div>
+                    <div class="card-action d-flex justify-content-center">
+                        <a href="#" class="waves-effect btn amber btn-block">View</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="{{ url_for('static', filename='images/doc-bg.png') }}" alt="" />
+                        <a class="btn-floating halfway-fab waves-effect waves-light amber lighten-2"
+                            ><i class="material-icons">edit</i></a
+                        >
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title font-weight-bold mt-0">Document 1</span>
+                        <p class="text-muted">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, excepturi architecto
+                            temporibus exercitationem magni sequi labore error nobis sint placeat
+                        </p>
+                    </div>
+                    <div class="card-action d-flex justify-content-center">
+                        <a href="#" class="waves-effect btn amber btn-block">View</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fixed-action-btn">
+        <a href="#" class="waves-effect btn-floating btn-large red">
+            <i class="large material-icons">add</i>
+        </a>
+    </div>
+</body>
+{% endblock %} {% block script %}
+<script>
+    $(document).ready(function() {
+        $(".sidenav").sidenav();
+    });
+</script>
+{% endblock %}
